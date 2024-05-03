@@ -1,25 +1,40 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import UserTable from "./components/tables/userTable";
+import PostTable from "./components/tables/PostTable";
+import "./App.css";
+import PostForm from "./components/forms/postForm";
+import { useState } from "react";
 
 function App() {
+  const [openForm, setOpenForm] = useState<boolean>(false);
+
+  const handleForm = () => {
+    setOpenForm(!openForm);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div className="container">
+        <h1>React CRUD App</h1>
+
+        {openForm ? (
+          <PostForm />
+        ) : (
+          <button className="btn btn-success" onClick={() => handleForm()}>
+            Add Post +
+          </button>
+        )}
+
+        <div className="flex-colum">
+          <div className="flex-large">
+            <h2>Post Datas</h2>
+            <PostTable />
+
+            <h2> Users Datas</h2>
+            <UserTable />
+          </div>
+        </div>
+      </div>
+    </>
   );
 }
 
