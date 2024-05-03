@@ -1,4 +1,4 @@
-import UseCustomData from "../../hooks/useCustomData";
+import UseCustomData from "../../../hooks/useCustomData";
 
 const UserTable = () => {
   const { users } = UseCustomData();

@@ -1,5 +1,5 @@
-import UserTable from "./components/tables/userTable";
-import PostTable from "./components/tables/PostTable";
+import UserTable from "./components/tables/userTable/userTable";
+import PostTable from "./components/tables/posttable/PostTable";
 import "./App.css";
 import PostForm from "./components/forms/postForm";
 import { useState } from "react";

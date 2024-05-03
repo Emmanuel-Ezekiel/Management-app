@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import ReactPaginate from "react-paginate";
-import UseCustomData from "../../hooks/useCustomData";
-import Loader from "../Loader/loader";
-import { PostTypes, PageClickEvent } from "../../constants/types";
-
+import UseCustomData from "../../../hooks/useCustomData";
+import Loader from "../../Loader/loader";
+import { PostTypes, PageClickEvent } from "../../../constants/types";
 
 const PostTable = () => {
   const { posts, handleDeletePost, load, handleEditPost } = UseCustomData();
@@ -25,7 +24,7 @@ const PostTable = () => {
     // Set the post being edited
     setEditingPost(post);
   };
-  
+
   const handleCancelEdit = () => {
     // Cancel editing and reset editingPost state
     setEditingPost(null);
@@ -33,7 +32,7 @@ const PostTable = () => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-      // Update input fields based on user input
+    // Update input fields based on user input
     setInputs((prevPost) => ({
       ...prevPost,
       [name]: value,
@@ -41,31 +40,30 @@ const PostTable = () => {
   };
 
   const handlePageClick = (event: PageClickEvent) => {
-     // Calculate new data offset based on pagination
+    // Calculate new data offset based on pagination
     const newOffset = (event.selected * datasPerPage) % (posts?.length || 0);
     setDataOffset(newOffset);
   };
-  
 
   const handleSaveEdit = () => {
     // PUT request to API endpoint to update post data
     if (editingPost !== null) {
-        handleEditPost(
-          {
-            title: input.title,
-            body: input.body,
-            id: editingPost.id,
-            userId: editingPost.userId,
-          },
-          editingPost.id
-        );
-         // Reset editing state and input fields
-        setEditingPost(null);
-        setInputs({
-          body: "",
-          title: "",
-        });
-      }
+      handleEditPost(
+        {
+          title: input.title,
+          body: input.body,
+          id: editingPost.id,
+          userId: editingPost.userId,
+        },
+        editingPost.id
+      );
+      // Reset editing state and input fields
+      setEditingPost(null);
+      setInputs({
+        body: "",
+        title: "",
+      });
+    }
   };
 
   return (
