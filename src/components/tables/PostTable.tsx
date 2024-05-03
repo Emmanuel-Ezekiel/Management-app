@@ -22,15 +22,18 @@ const PostTable = () => {
   const pageCount = Math.ceil(posts?.length / datasPerPage);
 
   const handleEdit = (post: PostTypes) => {
+    // Set the post being edited
     setEditingPost(post);
   };
-
+  
   const handleCancelEdit = () => {
+    // Cancel editing and reset editingPost state
     setEditingPost(null);
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
+      // Update input fields based on user input
     setInputs((prevPost) => ({
       ...prevPost,
       [name]: value,
@@ -38,6 +41,7 @@ const PostTable = () => {
   };
 
   const handlePageClick = (event: PageClickEvent) => {
+     // Calculate new data offset based on pagination
     const newOffset = (event.selected * datasPerPage) % (posts?.length || 0);
     setDataOffset(newOffset);
   };
@@ -55,6 +59,7 @@ const PostTable = () => {
           },
           editingPost.id
         );
+         // Reset editing state and input fields
         setEditingPost(null);
         setInputs({
           body: "",

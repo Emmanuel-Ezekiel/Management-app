@@ -21,7 +21,7 @@ const PostForm = () => {
 
   const handleSubmit: React.FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
-    const { title, body, id } = formData;
+    const { title, body } = formData;
 
     if (!title.trim() || !body.trim()) {
       setErrors({

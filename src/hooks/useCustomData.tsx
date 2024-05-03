@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import { UserTypes, PostTypes } from "../constants/types";
 import { getUser, getPosts, deletePost, updatePost, createPost } from "../Api";
 
@@ -7,7 +7,6 @@ const UseCustomData = () => {
   const [posts, setPosts] = useState<PostTypes[]>([]);
   const [load, setLoad] = useState<boolean>(false);
 
-  console.log(posts);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -21,6 +20,7 @@ const UseCustomData = () => {
     fetchData();
   }, []);
 
+    // Function for deleting new post
   const handleDeletePost = async (id: number | undefined) => {
     setLoad(true);
     const response = await deletePost(id);
@@ -30,6 +30,7 @@ const UseCustomData = () => {
     }
   };
 
+    // Function for Editing new post
   const handleEditPost = async (post: PostTypes, id: number | undefined) => {
     setLoad(true);
     const index = posts.findIndex((p) => p.id === post.id);
@@ -45,6 +46,7 @@ const UseCustomData = () => {
     }
   };
 
+  // Function for adding new post
   const handleAddPost = async (post: PostTypes) => {
     setLoad(true);
     const response = await createPost({
