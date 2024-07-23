@@ -17,7 +17,7 @@ const createAxiosResponseInterceptor = (axiosInstance: AxiosInstance) => {
   axiosInstance.interceptors.response.use(
     (response) => response,
     async (error) => {
-      return Promise.reject(error);
+      return Promise.reject(new Error(error.message));
     }
   );
 };

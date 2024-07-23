@@ -12,29 +12,27 @@ function App() {
   };
 
   return (
-    <>
-      <div className="container">
-        <h1>React CRUD App</h1>
+    <div className="container">
+      <h1>React CRUD App</h1>
 
-        {openForm ? (
-          <PostForm />
-        ) : (
-          <button className="btn btn-success" onClick={() => handleForm()}>
-            Add Post +
-          </button>
-        )}
+      {openForm ? (
+        <PostForm />
+      ) : (
+        <button className="btn btn-success" onClick={() => handleForm()}>
+          Add Post +
+        </button>
+      )}
 
-        <div className="flex-colum">
-          <div className="flex-large">
-            <h2>Post Datas</h2>
-            <PostTable />
+      <div className="flex-colum">
+        <div className="flex-large">
+          <h2>Post Datas</h2>
+          <PostTable />
 
-            <h2> Users Datas</h2>
-            <UserTable />
-          </div>
+          <h2> Users Datas</h2>
+          <UserTable />
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
